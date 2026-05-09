@@ -41,7 +41,7 @@ def loadConfig() -> dict:
     Raises SystemExit with a clear message if required variables are missing,
     so the container fails loudly at startup rather than on the first upload.
     """
-    required = ["QB_HOST", "QB_USERNAME", "QB_PASSWORD"]
+    required = ["QB_HOST", "QB_USERNAME"]
     missing = [key for key in required if not os.environ.get(key)]
     if missing:
         sys.exit(f"[ERROR] Missing required environment variables: {', '.join(missing)}")
@@ -49,7 +49,7 @@ def loadConfig() -> dict:
     return {
         "qbHost":     os.environ["QB_HOST"].rstrip("/"),
         "qbUsername": os.environ["QB_USERNAME"],
-        "qbPassword": os.environ["QB_PASSWORD"],
+        "qbPassword": os.environ.get("QB_PASSWORD", ""),
         "watchDir":   os.environ.get("WATCH_DIR", "/watch"),
         "savePath":   os.environ.get("QB_SAVE_PATH", ""),
         "category":   os.environ.get("QB_CATEGORY", ""),
