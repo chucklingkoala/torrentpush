@@ -1,0 +1,31 @@
+[Unit]
+Description=torrentpush — torrent folder watcher
+# Start after the network is up in case qBittorrent is on a remote host
+After=network.target
+
+[Service]
+Type=simple
+
+# Run as the user who owns the watch directory.
+# Change this to the appropriate user on your system.
+User=your-username
+
+# Set this to wherever you cloned/installed the repo
+WorkingDirectory=/opt/torrentpush
+
+# python-dotenv will load .env from the WorkingDirectory automatically,
+# so no EnvironmentFile= directive is needed here.
+ExecStart=/opt/torrentpush/venv/bin/python src/monitor.py
+
+# Restart the service if it crashes, but not if it exits cleanly (e.g. via
+# systemctl stop), so we don't loop on a bad config.
+Restart=on-failure
+RestartSec=5
+
+# Write stdout/stderr to the journal so logs are available via:
+#   journalctl -u torrentpush -f
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

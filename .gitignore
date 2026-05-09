@@ -1,0 +1,18 @@
+# Environment — never commit secrets
+.env
+.env.local
+
+# Claude Code
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Docker
+*.log

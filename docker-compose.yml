@@ -1,0 +1,17 @@
+services:
+  torrentpush:
+    build: .
+    container_name: torrentpush
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Change the left side to the host directory you want to watch.
+      # The right side must match WATCH_DIR in your .env (default: /watch).
+      - /mnt/data/torrents/inbox:/watch
+    networks:
+      - nginx-bridge
+
+networks:
+  nginx-bridge:
+    external: true
