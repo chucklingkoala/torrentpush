@@ -40,7 +40,7 @@ cp .env.example .env
 ### 1. Install
 
 ```bash
-git clone https://github.com/yourname/torrentpush.git /opt/torrentpush
+git clone https://github.com/chucklingkoala/torrentpush.git /opt/torrentpush
 cd /opt/torrentpush
 cp .env.example .env
 ```
@@ -86,7 +86,7 @@ sudo systemctl restart torrentpush  # restart after config changes
 ### 1. Install
 
 ```bash
-git clone https://github.com/yourname/torrentpush.git
+git clone https://github.com/chucklingkoala/torrentpush.git
 cd torrentpush
 cp .env.example .env
 ```
